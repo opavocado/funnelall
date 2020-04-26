@@ -11,6 +11,9 @@ var drop_timer
 func generate():
 	pass
 
+func reconfig():
+	pass
+
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	self.drop_path = spawner_drop_path
 	self.drop_spawn_location = spawner_drop_spawn_location

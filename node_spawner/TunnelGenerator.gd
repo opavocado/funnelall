@@ -2,15 +2,21 @@ extends Generator
 
 class_name TunnelGenerator
 
+const SPAWN_TIMER = .3
+
 var previous_offset = 160
 var max_offset
 var step_variance = 16 # aprox 1 drop
 var max_variance = step_variance * 3
 var random = RandomNumberGenerator.new()
 
+
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer).(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	max_offset = drop_path.get_curve().get_baked_length()
 	print("max offset: " + str(max_offset))
+
+func reconfig():
+	drop_timer.start(SPAWN_TIMER)
 
 func generate():
 	# Choose a random location on Path2D.

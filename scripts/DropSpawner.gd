@@ -57,3 +57,5 @@ func _on_AlgorithmTimer_timeout():
 		var candidate_generators = available_generators.duplicate()
 		candidate_generators.erase(current_generator)
 		current_generator = candidate_generators[random.randi_range(0,candidate_generators.size()-1)]
+	# Finally initialize current generator
+	current_generator.reconfig()
