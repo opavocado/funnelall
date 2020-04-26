@@ -4,6 +4,7 @@ extends Node2D
 var score
 var missed
 var missed_timers # used for clearing missed counter based on timers since the miss happened
+const MAX_RECOVERING = 10
 
 func _ready():
 	$HUD.hide()
@@ -37,7 +38,7 @@ func new_game():
 
 func _on_Drop_collided(body):
 	missed += 1
-	if(missed_timers.size() >= 2):
+	if(missed_timers.size() >= MAX_RECOVERING):
 		game_over() 
 	else:
 		var timer = Timer.new()
