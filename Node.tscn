@@ -15,7 +15,7 @@ animations = [ {
 extents = Vector2( 4.1608, 4.12893 )
 
 [node name="Node" type="RigidBody2D"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

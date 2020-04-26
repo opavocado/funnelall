@@ -1,13 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://art/floor.png" type="Texture" id=1]
+[ext_resource path="res://Environment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/GameController.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Node.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/NodeSpawner.gd" type="Script" id=5]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 240, 56 )
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,35 +21,47 @@ position = Vector2( 240, 584 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 scale = Vector2( 1.5, 1.5 )
 
-[node name="Floor" type="Area2D" parent="."]
-
-[node name="FloorSprite" type="Sprite" parent="Floor"]
-position = Vector2( 0, 600 )
-texture = ExtResource( 1 )
-centered = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 240, 656 )
-shape = SubResource( 2 )
-
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource( 6 )
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
-margin_left = 392.0
-margin_top = 16.0
-margin_right = 432.0
-margin_bottom = 30.0
+margin_left = 86.9587
+margin_top = 684.934
+margin_right = 126.959
+margin_bottom = 698.934
 text = "0"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CollectedLabel" type="Label" parent="HUD/ScoreLabel"]
+margin_left = -74.1707
+margin_top = -0.152832
+margin_right = -14.1707
+margin_bottom = 13.8472
+text = "Collected"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MissedLabel" type="Label" parent="HUD"]
-margin_left = 392.0
-margin_top = 40.0
-margin_right = 432.0
-margin_bottom = 54.0
+margin_left = 86.5885
+margin_top = 655.574
+margin_right = 126.589
+margin_bottom = 669.574
 text = "0"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MissedTextLabel" type="Label" parent="HUD/MissedLabel"]
+margin_left = -61.251
+margin_top = -0.750916
+margin_right = -15.251
+margin_bottom = 13.2491
+text = "Missed"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -67,6 +77,8 @@ curve = SubResource( 1 )
 
 [node name="NodeSpawnLocation" type="PathFollow2D" parent="NodeSpawner/NodePath"]
 position = Vector2( 16, 0 )
+
+[node name="Environment" parent="." instance=ExtResource( 1 )]
 [connection signal="node_caught" from="Player" to="." method="_on_Player_node_caught"]
-[connection signal="body_entered" from="Floor" to="." method="_on_Floor_body_entered"]
 [connection signal="timeout" from="NodeSpawner/NodeTimer" to="NodeSpawner" method="_on_NodeTimer_timeout"]
+[connection signal="node_collided" from="Environment" to="." method="_on_Node_collided"]

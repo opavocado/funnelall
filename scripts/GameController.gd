@@ -4,7 +4,7 @@ var score
 var missed
 
 func _ready():
-	.hide()
+	$HUD.hide()
 	score = 0
 	missed = 0
 	$HUD/ScoreLabel.text = str(score)
@@ -21,12 +21,13 @@ func game_over():
 	$NodeSpawner.stop()
 
 func new_game():
-	.show()
+	$HUD.show()
+	$Environment.generate()
 	score = 0
 	missed = 0 
 	$Player.start($StartPosition.position)
 	$NodeSpawner.start()
 
-func _on_Floor_body_entered(body):
-	body.queue_free()
+func _on_Node_collided(body):
 	missed += 1
+	body.queue_free()
