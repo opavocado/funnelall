@@ -1,6 +1,6 @@
 extends Area2D
 
-signal node_caught
+signal gold_caught
 
 export var speed = 500
 var screen_size
@@ -39,7 +39,7 @@ func _on_Player_body_entered(body):
 	# TODO Check what type the body is and signal accordingly
 	# For now, just a generic 'node_caught' signal is emitted
 	body.queue_free() # Caught node is deleted
-	emit_signal("node_caught")
+	emit_signal("gold_caught")
 
 func start(pos):
 	position = pos

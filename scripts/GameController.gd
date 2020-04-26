@@ -20,11 +20,11 @@ func update_HUD():
 	$HUD/MissedLabel.text = str(missed)
 	$HUD/RecoveringLabel.text = str(missed_timers.size())
 
-func _on_Player_node_caught():
+func _on_Player_gold_caught():
 	score += 1
 
 func game_over():
-	$NodeSpawner.stop()
+	$DropSpawner.stop()
 	
 
 func new_game():
@@ -33,9 +33,9 @@ func new_game():
 	score = 0
 	missed = 0 
 	$Player.start($StartPosition.position)
-	$NodeSpawner.start()
+	$DropSpawner.start()
 
-func _on_Node_collided(body):
+func _on_Drop_collided(body):
 	missed += 1
 	if(missed_timers.size() >= 2):
 		game_over() 

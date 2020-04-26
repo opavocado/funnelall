@@ -7,7 +7,7 @@ var current_generator
 
 func _ready():
 	# Prepare Generators
-	var basic_generator = BasicGenerator.new($NodePath,$NodePath/NodeSpawnLocation, $NodeTimer)
+	var basic_generator = BasicGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
 	generators.append(basic_generator)
 	available_generators.append(basic_generator)
 	current_generator = basic_generator
@@ -15,11 +15,11 @@ func _ready():
 
 func start():
 	$AlgorithmTimer.start()
-	$NodeTimer.start()
+	$DropTimer.start()
 
 func stop():
 	$AlgorithmTimer.stop()
-	$NodeTimer.stop()
+	$DropTimer.stop()
 	
 	# Destroy all falling nodes
 	var children = get_children()
@@ -27,9 +27,9 @@ func stop():
 		child.queue_free()
 	
 	
-func _on_NodeTimer_timeout():
-	var node = current_generator.generate()
-	add_child(node)
+func _on_DropTimer_timeout():
+	var drop = current_generator.generate()
+	add_child(drop)
 
 func _on_AlgorithmTimer_timeout():
 	# Pick randomly next generator
