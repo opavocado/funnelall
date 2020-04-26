@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Generator",
+"class": "BasicGenerator",
+"language": "GDScript",
+"path": "res://node_spawner/BasicGenerator.gd"
+}, {
+"base": "Node",
+"class": "Generator",
+"language": "GDScript",
+"path": "res://node_spawner/Generator.gd"
+} ]
 _global_script_class_icons={
-
+"BasicGenerator": "",
+"Generator": ""
 }
 
 [application]

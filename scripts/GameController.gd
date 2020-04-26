@@ -25,6 +25,7 @@ func _on_Player_node_caught():
 
 func game_over():
 	$NodeSpawner.stop()
+	
 
 func new_game():
 	$HUD.show()
