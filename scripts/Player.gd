@@ -2,7 +2,7 @@ extends Area2D
 
 signal node_caught
 
-export var speed = 400
+export var speed = 500
 var screen_size
 
 func _ready():

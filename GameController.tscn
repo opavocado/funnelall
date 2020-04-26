@@ -21,6 +21,7 @@ script = ExtResource( 2 )
 position = Vector2( 240, 584 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Floor" type="Area2D" parent="."]
 

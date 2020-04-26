@@ -15,15 +15,18 @@ animations = [ {
 extents = Vector2( 4.1608, 4.12893 )
 
 [node name="Node" type="RigidBody2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 2 )
 
 [node name="Visibility" type="VisibilityNotifier2D" parent="."]
