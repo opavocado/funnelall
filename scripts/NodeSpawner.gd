@@ -7,7 +7,13 @@ func start():
 
 func stop():
 	$NodeTimer.stop()
-
+	
+	# Destroy all falling nodes
+	var children = get_children()
+	for child in children:
+		child.queue_free()
+	
+	
 func _on_NodeTimer_timeout():
 	# Choose a random location on Path2D.
 	$NodePath/NodeSpawnLocation.offset = randi()
