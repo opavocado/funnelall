@@ -24,6 +24,27 @@ scale = Vector2( 1.5, 1.5 )
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )
 
+[node name="RecoveringLabel" type="Label" parent="HUD"]
+margin_left = 231.0
+margin_top = 655.971
+margin_right = 271.0
+margin_bottom = 669.971
+text = "0"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RecoveringTextLabel" type="Label" parent="HUD/RecoveringLabel"]
+margin_left = -86.2751
+margin_top = -0.917114
+margin_right = -16.2751
+margin_bottom = 13.0829
+text = "Recovering"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="HUD"]
 margin_left = 86.9587
 margin_top = 684.934

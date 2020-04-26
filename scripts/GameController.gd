@@ -10,12 +10,15 @@ func _ready():
 	score = 0
 	missed = 0
 	missed_timers = []
-	$HUD/ScoreLabel.text = str(score)
-	$HUD/MissedLabel.text = str(missed)
+	update_HUD()
 
 func _process(delta):
+	update_HUD()
+
+func update_HUD():
 	$HUD/ScoreLabel.text = str(score)
 	$HUD/MissedLabel.text = str(missed)
+	$HUD/RecoveringLabel.text = str(missed_timers.size())
 
 func _on_Player_node_caught():
 	score += 1
@@ -44,7 +47,6 @@ func _on_Node_collided(body):
 		add_child(timer)
 		timer.start()
 	body.queue_free()
-	print(missed_timers.size())
 
 func _on_Missed_Timer_timeout(timer):
 	missed_timers.erase(timer)
