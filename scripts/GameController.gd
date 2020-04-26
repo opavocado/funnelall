@@ -8,12 +8,12 @@ func _ready():
 	.hide()
 	score = 0
 	missed = 0
-	$ScoreLabel.text = str(score)
-	$MissedLabel.text = str(missed)
+	$HUD/ScoreLabel.text = str(score)
+	$HUD/MissedLabel.text = str(missed)
 
 func _process(delta):
-	$ScoreLabel.text = str(score)
-	$MissedLabel.text = str(missed)
+	$HUD/ScoreLabel.text = str(score)
+	$HUD/MissedLabel.text = str(missed)
 
 func _on_Player_node_caught():
 	score += 1
