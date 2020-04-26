@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Generator",
 "language": "GDScript",
 "path": "res://node_spawner/Generator.gd"
+}, {
+"base": "Generator",
+"class": "TunnelGenerator",
+"language": "GDScript",
+"path": "res://node_spawner/TunnelGenerator.gd"
 } ]
 _global_script_class_icons={
 "BasicGenerator": "",
-"Generator": ""
+"Generator": "",
+"TunnelGenerator": ""
 }
 
 [application]
