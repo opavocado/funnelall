@@ -11,6 +11,8 @@ var step_variance = 16 # aprox 1 drop
 var max_variance = step_variance * 3
 var random = RandomNumberGenerator.new()
 
+func get_name():
+	return "Tunnel"
 
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer).(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	max_offset = drop_path.get_curve().get_baked_length()

@@ -4,6 +4,9 @@ class_name BasicGenerator
 
 const SPAWN_TIMER = 1
 
+func get_name():
+	return "BasicGenerator"
+
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer).(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	pass
 

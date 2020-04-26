@@ -86,6 +86,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GeneratorLabel" type="Label" parent="HUD"]
+margin_left = 230.82
+margin_top = 681.898
+margin_right = 319.82
+margin_bottom = 695.898
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GeneratorTextLabel" type="Label" parent="HUD/GeneratorLabel"]
+margin_left = -83.9162
+margin_top = 0.899658
+margin_right = -19.9162
+margin_bottom = 14.8997
+text = "Generator"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DropSpawner" type="Node" parent="."]
 script = ExtResource( 5 )
 

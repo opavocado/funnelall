@@ -8,6 +8,9 @@ var drop_path
 var drop_spawn_location
 var drop_timer
 
+func get_name():
+	return "Generator"
+
 func generate():
 	pass
 

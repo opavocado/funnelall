@@ -20,6 +20,7 @@ func update_HUD():
 	$HUD/ScoreLabel.text = str(score)
 	$HUD/MissedLabel.text = str(missed)
 	$HUD/RecoveringLabel.text = str(missed_timers.size())
+	$HUD/GeneratorLabel.text = $DropSpawner.current_generator.get_name()
 
 func _on_Player_gold_caught():
 	score += 1
