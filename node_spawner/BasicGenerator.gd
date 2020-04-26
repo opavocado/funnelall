@@ -13,7 +13,10 @@ func reconfig():
 func generate():
 	# Choose a random location on Path2D.
 	drop_spawn_location.offset = randi()
-	print(drop_spawn_location.offset)
 	var drop = gold_instance()
 	drop.position = drop_spawn_location.position
+	
+	# Debug
+	#print(drop_spawn_location.offset)
+	
 	return drop

@@ -90,7 +90,7 @@ __meta__ = {
 script = ExtResource( 5 )
 
 [node name="AlgorithmTimer" type="Timer" parent="DropSpawner"]
-wait_time = 15.0
+wait_time = 5.0
 
 [node name="DropTimer" type="Timer" parent="DropSpawner"]
 
