@@ -79,18 +79,20 @@ func generate():
 	var drop = gold_instance()
 
 	# Set position and launch force
+	var x_force = rand_range(60.0,90.0)
+	var y_force = rand_range(-100,-140)
 	if current_side == Sides.LEFT :
 		drop.position = left_drop_spawn_location.position
 		drop.rotation = 270
 		#drop.add_central_force(Vector2(10,-65))
 		#drop.apply_impulse(Vector2(240,200),Vector2(10,-10))
-		drop.apply_impulse(Vector2(0,0),Vector2(70,-120))
+		drop.apply_impulse(Vector2(0,0),Vector2(x_force,y_force))
 	else:
 		drop.position = right_drop_spawn_location.position
 		drop.rotation = 90
 		#drop.add_central_force(Vector2(-10,-65))
 		#drop.apply_impulse(Vector2(240,200),Vector2(-10,-10))
-		drop.apply_impulse(Vector2(0,0),Vector2(-70,-120))
+		drop.apply_impulse(Vector2(0,0),Vector2(-x_force,y_force))
 	
 	#add_custom_torque(drop, SPAWN_TORQUE)
 	# Debug
