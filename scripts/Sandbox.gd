@@ -12,6 +12,7 @@ func _ready():
 	var target_position = Vector2($Gold.position.x-200, $Gold.position.y-100)
 	#$Gold.apply_impulse(apply_position, target_position)
 	$Gold.add_central_force(target_position)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

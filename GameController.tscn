@@ -18,7 +18,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 480, 384, 0, 0, 0, 0, 480, 16 )
+"points": PoolVector2Array( 0, 0, 0, 0, 480, 256, 0, 0, 0, 0, 480, 16 )
 }
 
 [node name="GameController" type="Node2D"]
@@ -130,6 +130,8 @@ curve = SubResource( 1 )
 position = Vector2( 16, 0 )
 
 [node name="LeftDropPath" type="Path2D" parent="DropSpawner"]
+position = Vector2( 0, 11.6364 )
+scale = Vector2( 1, 0.636364 )
 curve = SubResource( 2 )
 
 [node name="LeftDropSpawnLocation" type="PathFollow2D" parent="DropSpawner/LeftDropPath"]
@@ -140,7 +142,7 @@ rotation = -1.5708
 curve = SubResource( 3 )
 
 [node name="RightDropSpawnLocation" type="PathFollow2D" parent="DropSpawner/RightDropPath"]
-position = Vector2( 480, 384 )
+position = Vector2( 480, 256 )
 rotation = -1.5708
 
 [node name="Environment" parent="." instance=ExtResource( 1 )]

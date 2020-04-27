@@ -50,7 +50,8 @@ func reconfig():
 	# Set initial offset based on direction
 	previous_offset = 0 if current_direction == Directions.UP else max_offset
 
-func generate():	
+func generate():
+	# This is Side By Side Implementation of the Side Shooter
 	# Switch side
 	current_side = Sides.LEFT if current_side == Sides.RIGHT else Sides.RIGHT
 	
@@ -81,11 +82,15 @@ func generate():
 	if current_side == Sides.LEFT :
 		drop.position = left_drop_spawn_location.position
 		drop.rotation = 270
-		drop.add_central_force(Vector2(40,-65))
+		#drop.add_central_force(Vector2(10,-65))
+		#drop.apply_impulse(Vector2(240,200),Vector2(10,-10))
+		drop.apply_impulse(Vector2(0,0),Vector2(70,-120))
 	else:
 		drop.position = right_drop_spawn_location.position
 		drop.rotation = 90
-		drop.add_central_force(Vector2(-40,-65))
+		#drop.add_central_force(Vector2(-10,-65))
+		#drop.apply_impulse(Vector2(240,200),Vector2(-10,-10))
+		drop.apply_impulse(Vector2(0,0),Vector2(-70,-120))
 	
 	#add_custom_torque(drop, SPAWN_TORQUE)
 	# Debug
