@@ -17,6 +17,9 @@ func generate():
 func reconfig():
 	pass
 
+func add_custom_torque(body:RigidBody2D, torque:float):
+	body.add_torque(rand_range(-torque,torque))
+
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	self.drop_path = spawner_drop_path
 	self.drop_spawn_location = spawner_drop_spawn_location

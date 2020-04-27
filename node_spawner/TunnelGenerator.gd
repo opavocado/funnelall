@@ -3,6 +3,7 @@ extends Generator
 class_name TunnelGenerator
 
 const SPAWN_TIMER = .3
+const SPAWN_TORQUE = 5
 
 const STARTING_OFFSET = 240
 var previous_offset = STARTING_OFFSET
@@ -31,7 +32,7 @@ func generate():
 	var drop = gold_instance()
 	drop.position = drop_spawn_location.position
 	previous_offset = drop_spawn_location.offset
-	
+	add_custom_torque(drop, SPAWN_TORQUE)
 	# Debug
 	#print("Prev: " + str(previous_offset) + " - before: " + str(before_offset) + " - after: " + str(after_offset) + " - final: " + str(drop_spawn_location.offset))
 	

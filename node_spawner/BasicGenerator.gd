@@ -3,6 +3,7 @@ extends Generator
 class_name BasicGenerator
 
 const SPAWN_TIMER = 1
+const SPAWN_TORQUE = 10.0
 
 func get_name():
 	return "BasicGenerator"
@@ -18,6 +19,7 @@ func generate():
 	drop_spawn_location.offset = randi()
 	var drop = gold_instance()
 	drop.position = drop_spawn_location.position
+	add_custom_torque(drop, SPAWN_TORQUE)
 	
 	# Debug
 	#print(drop_spawn_location.offset)
