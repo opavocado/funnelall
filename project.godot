@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Generator",
+"base": "TopGenerator",
 "class": "BasicGenerator",
 "language": "GDScript",
 "path": "res://node_spawner/BasicGenerator.gd"
@@ -20,6 +20,16 @@ _global_script_classes=[ {
 "path": "res://node_spawner/Generator.gd"
 }, {
 "base": "Generator",
+"class": "SideShooterGenerator",
+"language": "GDScript",
+"path": "res://node_spawner/SideShooterGenerator.gd"
+}, {
+"base": "Generator",
+"class": "TopGenerator",
+"language": "GDScript",
+"path": "res://node_spawner/TopGenerator.gd"
+}, {
+"base": "TopGenerator",
 "class": "TunnelGenerator",
 "language": "GDScript",
 "path": "res://node_spawner/TunnelGenerator.gd"
@@ -27,6 +37,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BasicGenerator": "",
 "Generator": "",
+"SideShooterGenerator": "",
+"TopGenerator": "",
 "TunnelGenerator": ""
 }
 

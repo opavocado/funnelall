@@ -1,4 +1,4 @@
-extends Generator
+extends TopGenerator
 
 class_name BasicGenerator
 

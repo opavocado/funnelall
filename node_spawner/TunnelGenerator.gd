@@ -1,4 +1,4 @@
-extends Generator
+extends TopGenerator
 
 class_name TunnelGenerator
 
@@ -8,8 +8,8 @@ const SPAWN_TORQUE = 5
 const STARTING_OFFSET = 240
 var previous_offset = STARTING_OFFSET
 var max_offset
-var step_variance = 16 # aprox 1 drop
-var max_variance = step_variance * 3
+const STEP = 16 # aprox 1 drop
+const MAX_VARIANCE = STEP * 3
 var random = RandomNumberGenerator.new()
 
 func get_name():
@@ -26,8 +26,8 @@ func reconfig():
 func generate():
 	# Choose a random location on Path2D.
 	# max_variance before and after current location. Avoid current location, going below 0 and over max_offset
-	var before_offset = max(0, random.randi_range(previous_offset - max_variance, previous_offset - step_variance))
-	var after_offset = min(max_offset, random.randi_range(previous_offset + step_variance, previous_offset + max_variance))
+	var before_offset = max(0, random.randi_range(previous_offset - MAX_VARIANCE, previous_offset - STEP))
+	var after_offset = min(max_offset, random.randi_range(previous_offset + STEP, previous_offset + MAX_VARIANCE))
 	drop_spawn_location.offset = before_offset if randf() <= .5 else after_offset
 	var drop = gold_instance()
 	drop.position = drop_spawn_location.position

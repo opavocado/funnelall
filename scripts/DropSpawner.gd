@@ -10,12 +10,12 @@ func _ready():
 	# Prepare Generators
 	var basic_generator = BasicGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
 	generators.append(TunnelGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
+	generators.append(SideShooterGenerator.new($LeftDropPath, $LeftDropPath/LeftDropSpawnLocation, $RightDropPath, $RightDropPath/RightDropSpawnLocation, $DropTimer))
 	
 	# Prepare first run of the startin generator
 	generators.append(basic_generator)
 	available_generators.append(basic_generator)
 	current_generator = basic_generator
-	pass
 
 func start():
 	$AlgorithmTimer.start()
