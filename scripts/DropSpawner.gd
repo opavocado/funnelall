@@ -9,7 +9,7 @@ var random = RandomNumberGenerator.new()
 func _ready():
 	# Prepare Generators
 	var basic_generator = BasicGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
-	generators.append(TunnelGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
+	##generators.append(TunnelGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
 	generators.append(SideShooterGenerator.new($LeftDropPath, $LeftDropPath/LeftDropSpawnLocation, $RightDropPath, $RightDropPath/RightDropSpawnLocation, $DropTimer))
 	
 	# Prepare first run of the startin generator

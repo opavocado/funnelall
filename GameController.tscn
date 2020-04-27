@@ -133,11 +133,15 @@ position = Vector2( 16, 0 )
 curve = SubResource( 2 )
 
 [node name="LeftDropSpawnLocation" type="PathFollow2D" parent="DropSpawner/LeftDropPath"]
+position = Vector2( 0, 384 )
+rotation = -1.5708
 
 [node name="RightDropPath" type="Path2D" parent="DropSpawner"]
 curve = SubResource( 3 )
 
 [node name="RightDropSpawnLocation" type="PathFollow2D" parent="DropSpawner/RightDropPath"]
+position = Vector2( 480, 384 )
+rotation = -1.5708
 
 [node name="Environment" parent="." instance=ExtResource( 1 )]
 [connection signal="gold_caught" from="Player" to="." method="_on_Player_gold_caught"]
