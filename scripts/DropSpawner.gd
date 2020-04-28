@@ -18,19 +18,14 @@ func _ready():
 	current_generator = basic_generator
 
 func start():
+	_destroy_all_drops()
 	$AlgorithmTimer.start()
 	$DropTimer.start()
 
 func stop():
 	$AlgorithmTimer.stop()
 	$DropTimer.stop()
-	
-	# Destroy all falling nodes
-	var children = get_children()
-	for child in children:
-		child.queue_free()
-	
-	
+
 func _on_DropTimer_timeout():
 	var drop = current_generator.generate()
 	add_child(drop)
@@ -59,3 +54,10 @@ func _on_AlgorithmTimer_timeout():
 		current_generator = candidate_generators[random.randi_range(0,candidate_generators.size()-1)]
 	# Finally initialize current generator
 	current_generator.reconfig()
+
+func _destroy_all_drops():
+	# Destroy all falling nodes
+	var children = get_children()
+	for child in children:
+		if(child.get_name() == "Drop"):
+			child.queue_free()

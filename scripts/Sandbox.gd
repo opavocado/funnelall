@@ -12,9 +12,16 @@ func _ready():
 	var target_position = Vector2($Gold.position.x-200, $Gold.position.y-100)
 	#$Gold.apply_impulse(apply_position, target_position)
 	$Gold.add_central_force(target_position)
+	$Timer.start()
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Timer_timeout():
+	$Timer.stop()
+	print("Timeout!")
+	$Timer.start()

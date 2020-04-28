@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name HUD
+
 
 func _ready():
 	hide()
