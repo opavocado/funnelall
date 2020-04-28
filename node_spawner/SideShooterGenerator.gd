@@ -35,7 +35,7 @@ func _init(left_dp, left_dsl, right_dp, right_dsl, drop_timer).(drop_timer):
 	max_offset = left_drop_path.get_curve().get_baked_length()
 	if(max_offset != right_drop_path.get_curve().get_baked_length()):
 		# Checking that Paths have been properly configured
-		push_error("Left and Right Path lengths do not match\nLeft: " + str(max_offset) + "\nRight: " + str(right_drop_path.get_curve().get_baked_length()))
+		push_warning("Left and Right Path lengths do not match\nLeft: " + str(max_offset) + "\nRight: " + str(right_drop_path.get_curve().get_baked_length()))
 
 func reconfig():
 	drop_timer.start(SPAWN_TIMER)
