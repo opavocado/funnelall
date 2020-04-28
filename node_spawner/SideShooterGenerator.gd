@@ -83,7 +83,7 @@ func generate():
 	var y_force = rand_range(-100,-140)
 	if current_side == Sides.LEFT :
 		drop.position = left_drop_spawn_location.position
-		drop.rotation = 270
+		drop.rotation = 180
 		#drop.add_central_force(Vector2(10,-65))
 		#drop.apply_impulse(Vector2(240,200),Vector2(10,-10))
 		drop.apply_impulse(Vector2(0,0),Vector2(x_force,y_force))
