@@ -61,3 +61,11 @@ func _destroy_all_drops():
 	for child in children:
 		if(child.get_name() == "Drop"):
 			child.queue_free()
+
+func get_drops():
+	var drops = []
+	var children = get_children()
+	for child in children:
+		if(child.get_name() == "Drop"):
+			drops.append(child)
+	return drops
