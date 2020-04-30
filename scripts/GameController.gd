@@ -3,26 +3,28 @@ extends Node2D
 # Collected/Missed nodes counter
 var score
 var missed
-var missed_timers # used for clearing missed counter based on timers since the miss happened
+var recovering_progress = 0
 const PENALTY_PERCENT = .6
-const MAX_RECOVERING = 10
+const MISSED_DROP_POINTS = 34
+const MAX_RECOVERING = 100
 
 func _ready():
 	_reset_all()
 
 func _process(delta):
+	update_missed_status(delta)
 	update_HUD()
 
 func _reset_all():
 	score = 0
 	missed = 0
-	missed_timers = []
+	recovering_progress = 0
 	update_HUD()
 
 func update_HUD():
 	$HUD/ScoreLabel.text = str(score)
 	$HUD/MissedLabel.text = str(missed)
-	$HUD/RecoveringLabel.text = str(missed_timers.size())
+	$HUD/RecoveringProgressBar.value = recovering_progress
 	$HUD/GeneratorLabel.text = $DropSpawner.current_generator.get_name()
 
 func _on_Player_gold_caught():
@@ -31,7 +33,7 @@ func _on_Player_gold_caught():
 func game_over():
 	$DropSpawner.stop()
 	$Environment.dismantle()
-	$Player.position = Vector2(-1,-1) # "Hide" player - TODO refactor
+	$Player.position = Vector2(-32,-32) # "Hide" player - TODO refactor
 	$HUD.hide()
 	var penalty = score * PENALTY_PERCENT
 	var total = score - missed - penalty
@@ -49,18 +51,14 @@ func new_game():
 
 func _on_Drop_collided(body):
 	missed += 1
-	if(missed_timers.size() >= MAX_RECOVERING):
+	recovering_progress += MISSED_DROP_POINTS
+	if(recovering_progress >= MAX_RECOVERING):
 		game_over() 
-	else:
-		var timer = Timer.new()
-		timer.wait_time = 30.0
-		timer.one_shot = true
-		timer.connect("timeout", self, "_on_Missed_Timer_timeout", [timer])
-		missed_timers.append(timer)
-		add_child(timer)
-		timer.start()
 	body.queue_free()
 
-func _on_Missed_Timer_timeout(timer):
-	missed_timers.erase(timer)
-	timer.queue_free()
+func update_missed_status(delta):
+	if(recovering_progress > 0):
+		if(recovering_progress < delta):
+			recovering_progress = 0
+		else:
+			recovering_progress -= delta

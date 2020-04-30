@@ -93,7 +93,7 @@ margin_left = 152.0
 margin_top = 432.0
 margin_right = 239.0
 margin_bottom = 446.0
-text = "Penalty (30%)"
+text = "Penalty (60%)"
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
