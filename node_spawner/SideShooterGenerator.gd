@@ -75,8 +75,8 @@ func generate():
 	left_drop_spawn_location.offset = current_offset
 	right_drop_spawn_location.offset = current_offset
 	
-	# Generate Gold
-	var drop = gold_instance()
+	# Generate drop
+	var drop = drop_instance()
 
 	# Set position and launch force
 	var x_force = rand_range(60.0,90.0)

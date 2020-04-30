@@ -29,7 +29,7 @@ func generate():
 	var before_offset = max(0, random.randi_range(previous_offset - MAX_VARIANCE, previous_offset - STEP))
 	var after_offset = min(max_offset, random.randi_range(previous_offset + STEP, previous_offset + MAX_VARIANCE))
 	drop_spawn_location.offset = before_offset if randf() <= .5 else after_offset
-	var drop = gold_instance()
+	var drop = drop_instance()
 	drop.position = drop_spawn_location.position
 	previous_offset = drop_spawn_location.offset
 	add_custom_torque(drop, SPAWN_TORQUE)

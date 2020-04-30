@@ -17,7 +17,7 @@ func reconfig():
 func generate():
 	# Choose a random location on Path2D.
 	drop_spawn_location.offset = randi()
-	var drop = gold_instance()
+	var drop = drop_instance()
 	drop.position = drop_spawn_location.position
 	add_custom_torque(drop, SPAWN_TORQUE)
 	
