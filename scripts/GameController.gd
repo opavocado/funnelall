@@ -31,15 +31,22 @@ func _on_Player_gold_caught():
 	score += 1
 
 func game_over():
-	$DropSpawner.stop()
-	$Environment.dismantle()
-	$Player.position = Vector2(-32,-32) # "Hide" player - TODO refactor
+	_clear_room()
 	$HUD.hide()
 	var penalty = score * PENALTY_PERCENT
 	var total = score - missed - penalty
 	$UIGameOver.set_summary(score, missed, penalty, total)
 	$UIGameOver.show()
 
+# Removes player, drops and all kind of in game spawned entities
+func _clear_room():
+	$DropSpawner.stop()
+	$Environment.dismantle()
+	$Player.restart()
+	var children = get_children()
+	for child in children:
+		if child.get_name() == "ImplosionBomb":
+			child.queue_free()
 
 func new_game():
 	_reset_all()

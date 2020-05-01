@@ -53,12 +53,10 @@ func _on_Timer_timeout():
 			drop.apply_central_impulse(-drop.linear_velocity)
 			drop.apply_central_impulse(Vector2(0,-100))
 		collected_drops = obtain_drops_in_area($CollectArea)
-		collected_count = collected_drops.size()
-		$AnimatedImplosion.visible = false
+		collected_count = collected_drops.size()		
 		$AnimatedCollect.visible = true
 		$AnimatedCollect.playing = true
 	elif current_state == States.DESTROYING:
-		$AnimatedCollect.visible = false
 		emit_signal("collected_drops",collected_count)
 		queue_free()
 
@@ -85,3 +83,14 @@ func _on_CollisionArea_body_entered(body):
 	if body.get_name() == "Drop":
 		collected_count += 1
 		body.queue_free()
+
+
+func _on_AnimatedCollect_animation_finished():
+	$AnimatedCollect.visible = false
+
+
+func _on_AnimatedImplosion_animation_finished():
+	$AnimatedImplosion.visible = false
+
+func get_name():
+	return "ImplosionBomb"

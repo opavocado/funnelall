@@ -61,3 +61,6 @@ func _process_items(delta):
 		game_controller.add_child(implosion_bomb)
 		implosion_bomb.launch(self.position)
 		item_last_use = 0
+
+func restart():
+	self.position = Vector2(-32,-32) # "Hide" player - TODO refactor
