@@ -1,0 +1,100 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://player/ImplosionBomb.gd" type="Script" id=1]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect9.png" type="Texture" id=2]
+[ext_resource path="res://art/implosion-bomb-collect/implosion-bomb-collect2.png" type="Texture" id=3]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect3.png" type="Texture" id=4]
+[ext_resource path="res://art/implosion-bomb-collect/implosion-bomb-collect1.png" type="Texture" id=5]
+[ext_resource path="res://art/implosion-bomb.png" type="Texture" id=6]
+[ext_resource path="res://art/implosion-bomb-collect/implosion-bomb-collect4.png" type="Texture" id=7]
+[ext_resource path="res://art/implosion-bomb-collect/implosion-bomb-collect3.png" type="Texture" id=8]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect4.png" type="Texture" id=9]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect5.png" type="Texture" id=10]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect6.png" type="Texture" id=11]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect8.png" type="Texture" id=12]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect7.png" type="Texture" id=13]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect1.png" type="Texture" id=14]
+[ext_resource path="res://art/implosion-bomb-effect/implosion-bomb-effect2.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.46375
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 13.7997
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "default",
+"speed": 9.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 239.484, 360.364 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 96.4923
+
+[node name="ImplosionBomb" type="RigidBody2D"]
+position = Vector2( 234.399, 345.128 )
+mass = 2.0
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2( 1.5, 1.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource( 7 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedImplosion" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+
+[node name="AnimatedCollect" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+scale = Vector2( 0.65, 0.65 )
+frames = SubResource( 4 )
+
+[node name="PullArea" type="Area2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea"]
+visible = false
+position = Vector2( 7.00928, 15.4203 )
+shape = SubResource( 5 )
+
+[node name="CollectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource( 6 )
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

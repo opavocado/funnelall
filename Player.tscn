@@ -15,6 +15,7 @@ animations = [ {
 extents = Vector2( 16.0358, 15.9854 )
 
 [node name="Player" type="Area2D"]
+position = Vector2( 275.568, 180.686 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
