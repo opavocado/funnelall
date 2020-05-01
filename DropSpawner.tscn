@@ -9,12 +9,12 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 384, 0, 0, 0, 0, 0, 32 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 384, 0, 0, 0, 0, 0, 82.2856 )
 }
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 480, 256, 0, 0, 0, 0, 480, 16 )
+"points": PoolVector2Array( 0, 0, 0, 0, 480, 256, 0, 0, 0, 0, 480, 64 )
 }
 
 [node name="DropSpawner" type="Node"]
