@@ -17,7 +17,7 @@ func get_name():
 
 func _init(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer).(spawner_drop_path, spawner_drop_spawn_location, spawner_drop_timer):
 	max_offset = drop_path.get_curve().get_baked_length()
-	print("max offset: " + str(max_offset))
+	#print("max offset: " + str(max_offset))
 
 func reconfig():
 	drop_timer.start(SPAWN_TIMER)
