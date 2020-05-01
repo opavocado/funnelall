@@ -105,6 +105,6 @@ __meta__ = {
 }
 
 [node name="UIGameOver" parent="." instance=ExtResource( 4 )]
-[connection signal="gold_caught" from="Player" to="." method="_on_Player_gold_caught"]
+[connection signal="drop_caught" from="Player" to="." method="_on_Player_drop_caught"]
 [connection signal="node_collided" from="Environment" to="." method="_on_Drop_collided"]
 [connection signal="start_game" from="UIGameOver" to="." method="new_game"]

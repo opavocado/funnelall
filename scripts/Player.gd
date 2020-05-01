@@ -1,6 +1,6 @@
 extends Area2D
 
-signal gold_caught
+signal drop_caught
 
 var Implosion_Bomb = load("res://player/ImplosionBomb.tscn")
 const IMPLOSION_BOMB_COOLDOWN = 5
@@ -25,7 +25,7 @@ func _process(delta):
 func _on_Player_body_entered(body):
 	if body.get_name() == "Drop":
 		body.queue_free() # Caught drop is deleted
-	emit_signal("gold_caught")
+	emit_signal("drop_caught",1)
 
 func start(pos):
 	position = pos
@@ -51,16 +51,21 @@ func _process_movement(delta):
 	# Update player's position
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
+	
 	# Animate
-	## TODO
-	#
+	if velocity.x != 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
 
 func _process_items(delta):
 	if Input.is_action_pressed("ui_accept") && IMPLOSION_BOMB_COOLDOWN < item_last_use:
 		var implosion_bomb = Implosion_Bomb.instance()
 		game_controller.add_child(implosion_bomb)
 		implosion_bomb.launch(self.position)
+		implosion_bomb.connect("item_destroyed",self,"_on_item_caught_drop")
 		item_last_use = 0
+
+func _on_item_caught_drop(quantity_caught):
+	emit_signal("drop_caught",quantity_caught)
 
 func restart():
 	self.position = Vector2(-32,-32) # "Hide" player - TODO refactor

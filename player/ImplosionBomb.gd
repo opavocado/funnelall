@@ -4,7 +4,7 @@ extends RigidBody2D
 # 1 - pulls every drop in
 # 2 - collects them
 
-signal collected_drops
+signal item_destroyed
 
 const _PROCESS_COOLDOWN = .1 # used internally for collecting drops
 var process_cooldown = 0
@@ -53,11 +53,11 @@ func _on_Timer_timeout():
 			drop.apply_central_impulse(-drop.linear_velocity)
 			drop.apply_central_impulse(Vector2(0,-100))
 		collected_drops = obtain_drops_in_area($CollectArea)
-		collected_count = collected_drops.size()		
+		collected_count += collected_drops.size()		
 		$AnimatedCollect.visible = true
 		$AnimatedCollect.playing = true
 	elif current_state == States.DESTROYING:
-		emit_signal("collected_drops",collected_count)
+		emit_signal("item_destroyed",collected_count)
 		queue_free()
 
 func obtain_drops_in_area(area:Area2D):
@@ -72,8 +72,6 @@ func transition_state():
 	if current_state == States.TRAVELING:
 		current_state = States.PULLING
 		self.mode = MODE_STATIC
-		#self.apply_central_impulse(-self.linear_velocity)
-		#self.gravity_scale = 0.1
 	elif current_state == States.PULLING:
 		current_state = States.COLLECTING
 	elif current_state == States.COLLECTING:

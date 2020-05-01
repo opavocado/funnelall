@@ -27,8 +27,8 @@ func update_HUD():
 	$HUD/RecoveringProgressBar.value = recovering_progress
 	$HUD/GeneratorLabel.text = $DropSpawner.current_generator.get_name()
 
-func _on_Player_gold_caught():
-	score += 1
+func _on_Player_drop_caught(quantity_caught):
+	score += quantity_caught
 
 func game_over():
 	_clear_room()

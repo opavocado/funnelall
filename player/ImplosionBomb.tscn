@@ -28,7 +28,7 @@ animations = [ {
 radius = 7.46375
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 13.7997
+radius = 13.5703
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -61,10 +61,10 @@ script = ExtResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="CollisionArea" type="Area2D" parent="."]
 
@@ -82,13 +82,11 @@ scale = Vector2( 0.65, 0.65 )
 frames = SubResource( 4 )
 
 [node name="PullArea" type="Area2D" parent="."]
-visible = false
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea"]
-visible = false
 position = Vector2( 7.00928, 15.4203 )
 shape = SubResource( 5 )
 
