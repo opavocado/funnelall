@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Drop",
 "language": "GDScript",
-"path": "res://scripts/Gold.gd"
+"path": "res://scripts/Drop.gd"
 }, {
 "base": "Node",
 "class": "Generator",
