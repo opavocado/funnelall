@@ -54,6 +54,14 @@ func _on_AlgorithmTimer_timeout():
 		current_generator = candidate_generators[random.randi_range(0,candidate_generators.size()-1)]
 	# Finally initialize current generator
 	current_generator.reconfig()
+	
+	# Provide a brief pause between generator switch so that drops from the new pattern would collide with existing ones
+	$AlgorithmPauseSwitchTimer.start()
+	$DropTimer.stop()
+
+func _on_AlgorithmPauseSwitchTimer_timeout():
+	# Resume spawning drops
+	$DropTimer.start() 
 
 func _destroy_all_drops():
 	# Destroy all falling nodes
@@ -69,3 +77,6 @@ func get_drops():
 		if(child.get_name() == "Drop"):
 			drops.append(child)
 	return drops
+
+
+
