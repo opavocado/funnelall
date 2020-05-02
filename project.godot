@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "TopGenerator",
+"class": "BasicAngledGenerator",
+"language": "GDScript",
+"path": "res://node_spawner/BasicAngledGenerator.gd"
+}, {
+"base": "TopGenerator",
 "class": "BasicGenerator",
 "language": "GDScript",
 "path": "res://node_spawner/BasicGenerator.gd"
@@ -45,6 +50,7 @@ _global_script_classes=[ {
 "path": "res://node_spawner/TunnelGenerator.gd"
 } ]
 _global_script_class_icons={
+"BasicAngledGenerator": "",
 "BasicGenerator": "",
 "Drop": "",
 "Generator": "",
