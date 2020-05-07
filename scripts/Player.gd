@@ -7,7 +7,7 @@ const IMPLOSION_BOMB_COOLDOWN = 5
 var item_last_use = IMPLOSION_BOMB_COOLDOWN
 var game_controller
 
-export var speed = 500
+export var speed = 350
 var screen_size
 
 func _ready():

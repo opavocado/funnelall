@@ -8,10 +8,10 @@ var random = RandomNumberGenerator.new()
 
 func _ready():
 	# Prepare Generators
-	#var basic_generator = BasicGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
-	var basic_generator = BasicAngledGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
-	#generators.append(TunnelGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
-	#generators.append(SideShooterGenerator.new($LeftDropPath, $LeftDropPath/LeftDropSpawnLocation, $RightDropPath, $RightDropPath/RightDropSpawnLocation, $DropTimer))
+	var basic_generator = BasicGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer)
+	generators.append(TunnelGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
+	generators.append(SideShooterGenerator.new($LeftDropPath, $LeftDropPath/LeftDropSpawnLocation, $RightDropPath, $RightDropPath/RightDropSpawnLocation, $DropTimer))
+	generators.append(BasicAngledGenerator.new($DropPath,$DropPath/DropSpawnLocation, $DropTimer))
 	
 	# Prepare first run of the startin generator
 	generators.append(basic_generator)
